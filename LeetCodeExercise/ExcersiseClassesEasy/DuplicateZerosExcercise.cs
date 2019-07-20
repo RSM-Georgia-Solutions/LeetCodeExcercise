@@ -33,28 +33,18 @@ namespace LeetCodeExercise.ExcersiseClasses
             0 <= arr[i] <= 9*/
         public void DuplicateZeros(int[] arr)
         {
-            int count = 0;
-            int k = 0;
-            int[] arr2 = new int[arr.Length];
-            for (int i = 0; i < arr.Length -count; i++)
-            {
-                if (arr[i] == 0)
-                {
-                    arr2[k] = 0;
-                    arr2[k + 1] = 0;
-                    count++;
-                    k += 2;
-                }
-                else
-                {
-                    arr2[k] = arr[i];
-                    k++;
-                }
-            }
-
+            int num = 0;
             for (int i = 0; i < arr.Length; i++)
             {
-                arr[i] = arr2[i];
+                num = arr[i];
+                if (num == 0)
+                {
+                    for (int j = arr.Length - 1; j > i; j--)
+                    {
+                        arr[j] = arr[j - 1];
+                    }
+                    i++;
+                }
             }
         }
     }
